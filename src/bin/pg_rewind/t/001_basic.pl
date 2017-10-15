@@ -8,7 +8,6 @@ use RewindTest;
 sub run_test
 {
 	my $test_mode = shift;
-
 	RewindTest::setup_cluster();
 	RewindTest::start_master();
 

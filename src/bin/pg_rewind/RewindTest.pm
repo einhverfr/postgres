@@ -1,4 +1,5 @@
 package RewindTest;
+use Carp::Always;
 
 # Test driver for pg_rewind. Each test consists of a cycle where a new cluster
 # is first created with initdb, and a streaming replication standby is set up

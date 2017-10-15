@@ -26,6 +26,30 @@
 static void recurse_dir(const char *datadir, const char *path,
 			process_file_callback_t callback);
 
+/* List of directories to synchronize:
+ * base data dirs (and ablespaces)
+ * wal/transaction data
+ * and that is it.
+ *
+ * This array is null-terminated to make
+ * it easy to expand
+ */
+
+const char *rewind_dirs[] = {
+    "base",
+    "global",
+    "pg_commit_ts",
+    "pg_logical",
+    "pg_multixact",
+    "pg_serial",
+    "pg_subtrans",
+    "pg_tblspc",
+    "pg_twophese",
+    "pg_wal",
+    "pg_xact",
+    NULL
+};
+
 static void execute_pagemap(datapagemap_t *pagemap, const char *path);
 
 /*
@@ -36,6 +60,15 @@ void
 traverse_datadir(const char *datadir, process_file_callback_t callback)
 {
 	recurse_dir(datadir, NULL, callback);
+}
+
+void
+traverse_rewinddirs(const char *datadir, process_file_callback_t callback)
+{
+	int i;;
+	for(i = 0; rewind_dirs[i] != NULL; i++){
+		recurse_dir(rewind_dirs[i], datadir, callback); 
+	}
 }
 
 /*
