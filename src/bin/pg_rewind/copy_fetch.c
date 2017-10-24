@@ -44,7 +44,7 @@ const char *rewind_dirs[] = {
     "pg_serial",
     "pg_subtrans",
     "pg_tblspc",
-    "pg_twophese",
+    "pg_twophase",
     "pg_wal",
     "pg_xact",
     NULL
@@ -65,9 +65,9 @@ traverse_datadir(const char *datadir, process_file_callback_t callback)
 void
 traverse_rewinddirs(const char *datadir, process_file_callback_t callback)
 {
-	int i;;
+	int i;
 	for(i = 0; rewind_dirs[i] != NULL; i++){
-		recurse_dir(rewind_dirs[i], datadir, callback); 
+		recurse_dir(datadir, rewind_dirs[i], callback); 
 	}
 }
 
