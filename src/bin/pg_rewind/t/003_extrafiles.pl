@@ -76,7 +76,7 @@ sub run_test
                         "$test_master_datadir/tst_master_dir/master_file2",
                         "$test_master_datadir/tst_master_dir/master_subdir",
                         "$test_master_datadir/tst_master_dir/master_subdir/master_file3", ],
-		"file lists match") or diag(explain(\@paths));
+		"file lists match") or (diag("Files found:"), diag(explain(\@paths)));
 
 	RewindTest::clean_rewind_test();
 }
