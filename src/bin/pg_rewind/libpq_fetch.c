@@ -181,6 +181,14 @@ libpqProcessFileList(void)
 		"FROM files\n"
 		"LEFT OUTER JOIN pg_tablespace ON files.path = 'pg_tblspc/'\n"
 		"                             AND oid::text = files.filename\n";
+
+	/* Going through the directories in a loop.  Doing it this way
+	 * makes it easier to add more inclusions later.
+	 *
+	 * Note that the query filters out on top-level directories before
+	 * recursion so this will not give us problems in terms of listing
+	 * lots of files many times.
+	 */
 	for (p = 0; rewind_dirs[p] != NULL; ++p)
 	{
 		const char *paths[1];
