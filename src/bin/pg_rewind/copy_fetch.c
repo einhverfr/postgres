@@ -54,7 +54,6 @@ static void execute_pagemap(datapagemap_t *pagemap, const char *path);
  * Traverse through all files in a data directory, calling 'callback'
  * for each file.
  */
-
 void
 traverse_rewinddirs(const char *datadir, process_file_callback_t callback)
 {
