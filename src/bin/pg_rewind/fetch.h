@@ -36,7 +36,7 @@ extern void libpqConnect(const char *connstr);
 extern XLogRecPtr libpqGetCurrentXlogInsertLocation(void);
 
 /* in copy_fetch.c */
-extern char *rewind_dirs[];
+extern const char *rewind_dirs[];
 extern void copy_executeFileMap(filemap_t *map);
 
 typedef void (*process_file_callback_t) (const char *path, file_type_t type, size_t size, const char *link_target);

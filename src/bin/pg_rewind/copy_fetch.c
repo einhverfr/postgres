@@ -56,11 +56,6 @@ static void execute_pagemap(datapagemap_t *pagemap, const char *path);
  * Traverse through all files in a data directory, calling 'callback'
  * for each file.
  */
-void
-traverse_datadir(const char *datadir, process_file_callback_t callback)
-{
-	recurse_dir(datadir, NULL, callback);
-}
 
 void
 traverse_rewinddirs(const char *datadir, process_file_callback_t callback)
@@ -72,7 +67,7 @@ traverse_rewinddirs(const char *datadir, process_file_callback_t callback)
 }
 
 /*
- * recursive part of traverse_datadir
+ * recursive part of traverse_rewinddirs
  *
  * parentpath is the current subdirectory's path relative to datadir,
  * or NULL at the top level.
