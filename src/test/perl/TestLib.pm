@@ -10,7 +10,6 @@ package TestLib;
 use strict;
 use warnings;
 
-use Carp::Always;
 use Config;
 use Exporter 'import';
 use File::Basename;

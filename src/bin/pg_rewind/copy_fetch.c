@@ -36,17 +36,15 @@ static void recurse_dir(const char *datadir, const char *path,
  */
 
 const char *rewind_dirs[] = {
-    "base",
-    "global",
-    "pg_commit_ts",
-    "pg_logical",
-    "pg_multixact",
-    "pg_serial",
-    "pg_subtrans",
-    "pg_tblspc",
-    "pg_twophase",
-    "pg_wal",
-    "pg_xact",
+    "base",         // Default tablespace
+    "global",       // global tablespace
+    "pg_commit_ts", // In case we need to do PITR before up to sync
+    "pg_logical",   // WAL related and no good reason to exclude
+    "pg_multixact", // WAL related and may need for vacuum-related reasons
+    "pg_tblspc",    // Pther tablespaces
+    "pg_twophase",  // mostly to *clear*
+    "pg_wal",       // WAL
+    "pg_xact",      // Commits of transactions
     NULL
 };
 
